@@ -3,7 +3,7 @@ import SectionWrapper from "./SectionWrapper";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 py-10">
+    <footer className="relative z-30 border-t border-white/5 py-10 mt-32">
       <SectionWrapper>
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div>
