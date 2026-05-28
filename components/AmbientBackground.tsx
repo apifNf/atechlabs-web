@@ -1,47 +1,102 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function AmbientBackground() {
+  const { scrollY } = useScroll();
+
+  const y1 = useTransform(scrollY, [0, 2000], [0, 250]);
+  const y2 = useTransform(scrollY, [0, 2000], [0, -180]);
+
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
-      {/* main beam */}
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+
+      {/* base */}
+      <div className="absolute inset-0 bg-black" />
+
+      {/* giant purple glow */}
       <motion.div
+        style={{ y: y1 }}
         animate={{
-          x: [0, 12, -8, 0],
-          y: [0, -8, 10, 0],
-          opacity: [0.5, 0.75, 0.6, 0.5],
+          x: [0, 140, -70, 0],
+          scale: [1, 1.18, 0.92, 1],
         }}
         transition={{
           duration: 14,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute right-[12%] top-[-10%] h-[140vh] w-[320px]"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(120,150,255,0.08) 0%, rgba(80,70,255,0.12) 45%, rgba(130,70,255,0.08) 75%, transparent 100%)",
-          filter: "blur(90px)",
-          transform: "rotate(4deg)",
-        }}
+        className="
+          absolute
+          top-[-10%]
+          right-[-15%]
+          w-[900px]
+          h-[1200px]
+          rounded-full
+          bg-violet-700/20
+          blur-[180px]
+        "
       />
 
-      {/* secondary glow */}
+      {/* blue beam */}
       <motion.div
+        style={{ y: y2 }}
         animate={{
-          opacity: [0.15, 0.3, 0.2, 0.15],
+          x: [0, -120, 60, 0],
+          scaleY: [1, 1.35, 0.82, 1],
         }}
         transition={{
           duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute right-[18%] top-[5%] h-[120vh] w-[180px]"
+        className="
+          absolute
+          top-[5%]
+          right-[8%]
+          w-[260px]
+          h-[900px]
+          rounded-full
+          bg-cyan-300/30
+          blur-[140px]
+        "
+      />
+
+      {/* secondary purple */}
+      <motion.div
+        animate={{
+          x: [0, 30, -20, 0],
+          opacity: [0.3, 0.5, 0.25, 0.3],
+        }}
+        transition={{
+          duration: 16,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+          absolute
+          bottom-[-10%]
+          right-[10%]
+          w-[500px]
+          h-[500px]
+          rounded-full
+          bg-fuchsia-500/10
+          blur-[140px]
+        "
+      />
+
+      {/* dark cinematic overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-black/10" />
+
+      {/* subtle grain */}
+      <div
+        className="
+          absolute inset-0 opacity-[0.04]
+          mix-blend-soft-light
+        "
         style={{
-          background:
-            "linear-gradient(180deg, rgba(180,120,255,0.12), transparent)",
-          filter: "blur(70px)",
-          pointerEvents: "none",
+          backgroundImage:
+            "url('https://grainy-gradients.vercel.app/noise.svg')",
         }}
       />
     </div>
