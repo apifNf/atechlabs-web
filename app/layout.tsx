@@ -1,5 +1,6 @@
 import "./globals.css";
 import { ReactNode } from "react";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata = {
   title: "A-Tech Labs",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+  {children}
+</body>
     </html>
   );
 }

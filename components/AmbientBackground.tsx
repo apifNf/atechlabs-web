@@ -5,8 +5,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 export default function AmbientBackground() {
   const { scrollY } = useScroll();
 
-  const y1 = useTransform(scrollY, [0, 2000], [0, 250]);
-  const y2 = useTransform(scrollY, [0, 2000], [0, -180]);
+  const y1 = useTransform(scrollY, [0, 2000], [0, 450]);
+const y2 = useTransform(scrollY, [0, 2000], [0, -350]);
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
@@ -65,14 +65,16 @@ export default function AmbientBackground() {
       {/* secondary purple */}
       <motion.div
         animate={{
-          x: [0, 30, -20, 0],
-          opacity: [0.3, 0.5, 0.25, 0.3],
-        }}
-        transition={{
-          duration: 16,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+  x: [0, 60, -40, 0],
+  y: [0, -20, 10, 0],
+  opacity: [0.25, 0.55, 0.3, 0.25],
+}}
+
+transition={{
+  duration: 12,
+  repeat: Infinity,
+  ease: "easeInOut",
+}}
         className="
           absolute
           bottom-[-10%]
