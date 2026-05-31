@@ -32,7 +32,7 @@ export default function Thesis() {
 </motion.p>
 
       <motion.h2
-  className="text-[3.3rem] sm:text-6xl md:text-6xl leading-[0.95] font-serif text-white max-w-6xl overflow-hidden"
+  className="text-[2.7rem] sm:text-5xl md:text-6xl leading-[0.95] font-serif text-white max-w-6xl overflow-hidden"
   initial={{
     opacity: 0,
     clipPath: "inset(0 100% 0 0)",
@@ -53,7 +53,7 @@ export default function Thesis() {
         productized knowledge, and premium digital infrastructure.
       </motion.h2>
 
-      <div className="grid md:grid-cols-3 gap-8 mt-32">
+      <div className="grid md:grid-cols-3 gap-6 mt-24">
         <motion.div
 className="
 rounded-3xl
