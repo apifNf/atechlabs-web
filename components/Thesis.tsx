@@ -32,7 +32,7 @@ export default function Thesis() {
 </motion.p>
 
       <motion.h2
-  className="text-6xl leading-[1] font-serif text-white max-w-6xl overflow-hidden"
+  className="text-[3.3rem] sm:text-6xl md:text-6xl leading-[0.95] font-serif text-white max-w-6xl overflow-hidden"
   initial={{
     opacity: 0,
     clipPath: "inset(0 100% 0 0)",
@@ -78,7 +78,7 @@ transition={{
   duration: 0.25,
 }}
 >
-          <h3 className="text-2xl font-semibold mb-4">Intelligence over noise</h3>
+          <h3 className="text-xl font-semibold mb-4">Intelligence over noise</h3>
           <p className="text-white/60 text-lg leading-relaxed">
             We build systems that create leverage, not distractions.
           </p>
