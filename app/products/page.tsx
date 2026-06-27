@@ -5,10 +5,14 @@ import Footer from "@/components/Footer";
 
 export default function ProductsPage() {
   return (
-    <main className="min-h-screen bg-black text-white overflow-x-hidden">
+    <main className="relative min-h-screen overflow-x-hidden bg-black text-white">
       <AmbientBackground />
       <Navbar />
-      <ProductGrid />
+
+      <div className="relative z-10">
+        <ProductGrid />
+      </div>
+
       <Footer />
     </main>
   );
