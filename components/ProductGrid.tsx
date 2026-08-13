@@ -1,132 +1,170 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 
-const categories = [
+const products = [
   {
-    title: "Global Product Suite",
+    title: "RantauFlow",
+    status: "LIVE",
+    category: "Personal Finance",
     description:
-      "Digital products for creators, founders, and businesses worldwide.",
-    button: "Explore →",
-    url: "https://payhip.com/b/y2fIO",
+      "AI-powered personal finance platform helping overseas workers manage expenses and build better financial habits.",
+    button: "Explore Product →",
+    url: "https://rantauflow.app",
   },
   {
-    title: "Indonesia Ecosystem Hub",
+    title: "CryptoInside",
+    status: "LIVE",
+    category: "Research Platform",
     description:
-      "Localized products and resources built for the Indonesian market.",
-    button: "Explore →",
-    url: "https://clicky.id/atechlabs",
+      "AI-powered crypto education and market research platform focused on structured learning instead of hype.",
+    button: "Explore Product →",
+    url: "https://cryptoinside.site",
   },
   {
-    title: "Bespoke Systems & Development",
+    title: "Oracle",
+    status: "IN DEVELOPMENT",
+    category: "AI Intelligence Engine",
     description:
-      "Custom AI systems, automation, and digital infrastructure for ambitious companies.",
-    button: "Work With Us →",
-    url: "https://wa.link/vuw10d",
+      "Next-generation AI engine designed for market intelligence, automation, and decision support systems.",
+    button: "Coming Soon",
+    url: "#",
   },
 ];
 
 export default function ProductGrid() {
   return (
-    <section className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-20 md:px-10 md:pt-32 md:pb-24">
+    <section className="relative z-20 mx-auto max-w-7xl px-6 py-32">
 
-      {/* HERO */}
+      <motion.p
+        className="text-xs tracking-[0.5em] text-white/40 mb-8"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        SOFTWARE PRODUCTS
+      </motion.p>
 
-      <div className="mb-16 max-w-3xl">
-        <h1 className="font-serif text-[2.7rem] sm:text-5xl md:text-6xl lg:text-[4.6rem] font-medium leading-[0.95] tracking-[-0.04em] text-white">
-          Premium & Global
-          <br />
-          Tech Studio
-        </h1>
+      <motion.h2
+        className="font-serif text-[2.8rem] sm:text-5xl md:text-6xl leading-[0.95] max-w-5xl"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        Every product is built as a long-term digital asset, not a one-time project.
+      </motion.h2>
 
-        <p className="mt-6 max-w-sm text-[15px] leading-7 text-white/60 sm:max-w-xl md:mt-8 md:max-w-2xl md:text-xl md:leading-8">
-          Building products for everyone.
-          <br />
-          Engineering systems for those who need more.
-        </p>
-      </div>
+      <motion.p
+        className="mt-8 max-w-3xl text-lg leading-relaxed text-white/60"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        A-Tech Labs develops software products that become reusable digital
+        infrastructure. Every product contributes to a growing ecosystem of
+        research, automation, and AI Visibility technologies.
+      </motion.p>
 
-      {/* GRID */}
+      <div className="grid lg:grid-cols-3 gap-8 mt-20">
 
-      <div className="grid items-stretch gap-6 md:gap-8 md:grid-cols-3">
+        {products.map((product, index) => (
 
-        {categories.map((item) => (
-
-          <div
-            key={item.title}
+          <motion.div
+            key={product.title}
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              delay: index * 0.15,
+            }}
+            whileHover={{
+              y: -8,
+              scale: 1.015,
+            }}
             className="
-              flex
-              min-h-[165px]
-              md:min-h-[170px]
-              flex-col
-              justify-between
-              rounded-[28px]
-              md:rounded-[32px]
-              border
-              border-white/[0.06]
-              bg-gradient-to-br
-              from-white/[0.04]
-              via-white/[0.015]
-              to-transparent
-              backdrop-blur-xl
-              px-6
-              py-6
-              md:px-8
-              md:py-8
-              shadow-[0_10px_40px_rgba(0,0,0,0.18)]
-              transition-all
-              duration-500
-              hover:-translate-y-[2px]
-              hover:border-white/15
-              hover:bg-white/[0.045]
+            group
+            rounded-[34px]
+            border
+            border-white/10
+            bg-white/[0.02]
+            backdrop-blur-xl
+            p-8
+            transition-all
+            duration-500
+            hover:border-white/20
+            hover:bg-white/[0.035]
             "
           >
 
-            <div>
+            <div className="flex items-center justify-between">
 
-              <h2 className="font-semibold text-[1.85rem] leading-[1.12] tracking-[-0.02em] text-white md:text-[1.75rem]">
-                {item.title}
-              </h2>
+              <span className="text-xs tracking-[0.35em] text-white/40 uppercase">
+                {product.category}
+              </span>
 
-              <p className="mt-4 text-[14px] leading-7 text-white/60 md:mt-5 md:text-base md:leading-8">
-                {item.description}
-              </p>
+              <span
+                className={`text-[11px] tracking-[0.35em] uppercase ${
+                  product.status === "LIVE"
+                    ? "text-emerald-400"
+                    : "text-amber-400"
+                }`}
+              >
+                {product.status}
+              </span>
 
             </div>
 
-            <Link
-              href={item.url}
-              target="_blank"
-              className="
-                mt-7
-                inline-flex
-                items-center
-                justify-center
-                rounded-[28px]
-                md:rounded-[32px]
-                border
-                border-white/10
-                bg-white/[0.04]
-                px-6
-                py-3
-                md:px-8
-                md:py-4
-                text-[13px]
-                md:text-sm
-                font-medium
-                uppercase
-                tracking-[0.22em]
-                text-white
-                backdrop-blur-md
-                transition-all
-                duration-500
-                hover:border-white/25
-                hover:bg-white
-                hover:text-black
-              "
-            >
-              {item.button}
-            </Link>
+            <h3 className="mt-8 font-serif text-4xl text-white group-hover:text-white">
+              {product.title}
+            </h3>
 
-          </div>
+            <p className="mt-6 leading-8 text-white/60">
+              {product.description}
+            </p>
+
+            <div className="mt-10 pt-8 border-t border-white/10 flex items-center justify-between">
+
+              <span className="text-xs tracking-[0.3em] uppercase text-white/30">
+                Product Entity
+              </span>
+
+              {product.status === "LIVE" ? (
+                <Link
+                  href={product.url}
+                  target="_blank"
+                  className="
+                  rounded-full
+                  border
+                  border-white/10
+                  px-5
+                  py-3
+                  text-xs
+                  tracking-[0.3em]
+                  uppercase
+                  transition-all
+                  duration-300
+                  hover:bg-white
+                  hover:text-black
+                  "
+                >
+                  {product.button}
+                </Link>
+              ) : (
+                <span className="text-xs tracking-[0.3em] uppercase text-white/30">
+                  Coming Soon
+                </span>
+              )}
+
+            </div>
+
+          </motion.div>
 
         ))}
 
